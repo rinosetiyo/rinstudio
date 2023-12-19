@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from blogApp.models import Category, Post
 
 # Create your views here.
@@ -21,3 +21,17 @@ def index(request):
         'categories': categories,
     }
     return render(request, 'index.html', context)
+
+def single_post(request, slug):
+    categories = Category.objects.all()
+    recent_posts = Post.objects.all().order_by('-created_at')[0:4]
+    post = get_object_or_404(Post, slug=slug)
+    context = {
+        'post': post,
+        'categories': categories,
+        'recent_posts': recent_posts,
+    }
+    return render(request, 'posts/single-post.html', context)
+
+def category(request):
+    return render(request, 'posts/category.html')
