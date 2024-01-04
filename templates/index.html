@@ -52,7 +52,7 @@
           <div class="row g-5">
             <div class="col-lg-4">
               {% for post in lg_posts %}
-                <a class="post-entry-1 lg" href="{% url "single-post" post.slug %}">
+                <a class="post-entry-1 lg" href="{% url "single_post" post.slug %}">
                   {% if post.post_image %}
                   <img src="{{ post.post_image.url }}" alt="" class="img-fluid" />
                   {% else %}
@@ -101,7 +101,7 @@
                         <span>{{ post.created_at|date }}</span>
                       </div>
 
-                      <h2><a href="{% url "single-post" post.slug %}">{{ post.title }}</a></h2>
+                      <h2><a href="{% url "single_post" post.slug %}">{{ post.title }}</a></h2>
                     </div>
                   {% endfor %}
                 </div>
